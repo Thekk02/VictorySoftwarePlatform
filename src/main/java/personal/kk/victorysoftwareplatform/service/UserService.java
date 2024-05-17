@@ -1,12 +1,16 @@
 package personal.kk.victorysoftwareplatform.service;
 
-import personal.kk.victorysoftwareplatform.mappers.db1.UserMapper;
+import com.baomidou.mybatisplus.extension.service.IService;
+import personal.kk.victorysoftwareplatform.entity.User;
+
+import java.util.List;
 
 /**
  * @author kk
  * @description user服务层
  * @date 2024-5-15 16:19:30
  */
-public interface UserService extends UserMapper {
+public interface UserService extends IService<User>  {
 
+    List<User> getAll();
 }

@@ -5,23 +5,27 @@ spring:
       max-file-size: 2048MB
       max-request-size: 1024MB
   datasource:
-    db1: # 数据源1(mysql包括用户表部门表以及基础数据表)
-      jdbc-url: jdbc:mysql://localhost:3306/victory?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8
-      username: root
-      password: 123456
-      driver-class-name: com.mysql.cj.jdbc.Driver
+    dynamic:
+      primary: db1
+      strict: false
+      datasource:
+        db1: # 数据源1(mysql包括用户表部门表以及基础数据表)
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://localhost:3306/victory?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8
+          username: root
+          password: 123456
+        db2: # 数据源2（plm数据库，负责查询和修改plm数据）
+          driver-class-name: org.postgresql.Driver
+          url: jdbc:postgresql://192.168.1.33:5432/vtle?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8
+          username: postgres
+          password: wtl@plm
+        db3: # 数据源3（201数据库，负责查询和修改201数据）
+          driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+          url: jdbc:sqlserver://10.0.1.20:1433;UFDATA_201_2020?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8
+          username: kk
+          password: 123456
 
-      db2: # 数据源2（plm数据库，负责查询和修改plm数据）
-        jdbc-url: jdbc:postgresql://192.168.1.32:5432/vtle?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8
-        username: postgres
-        password: cvzhanshi
-        driver-class-name: org.postgresql.Driver
 
-      db3: # 数据源3（201数据库，负责查询和修改201数据）
-        jdbc-url: jdbc:sqlserver://10.0.1.20:1433/UFDATA_201_2020?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8
-        username: sa
-        password: wtlBBJ!@#
-        driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
   jackson:
     time-zone: GMT+8
     date-format: yyyy-MM-dd HH:mm:ss
@@ -74,9 +78,9 @@ management:
         time-to-live: 10000
 
 
-  # 可以自定义端口
-  # server:
-  #   port: 8089
+   #可以自定义端口
+    server:
+      port: 8080
 
 # 描述项目基础信息
 info:
@@ -86,6 +90,7 @@ info:
     version: 1.0.0
     author: kk
 
-#mybatis配置
-mybatis:
+logging:
+  level:
+    com.baomidou.dynamic: debug
 

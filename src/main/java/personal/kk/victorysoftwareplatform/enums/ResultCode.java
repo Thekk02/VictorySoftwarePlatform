@@ -6,7 +6,7 @@ package personal.kk.victorysoftwareplatform.enums;
  * @date 2024-5-15 10:14:54
  */
 public enum ResultCode {
-    SUCCESS(200,"成功"),FAIL(201,"失败"),TOKEN_ERROR(201,"验证码错误");
+    SUCCESS(200,"成功"),FAIL(201,"失败"),TOKEN_ERROR(201,"验证码错误"),LOSE(404,"页面丢失");
 
 
     private final Integer code;

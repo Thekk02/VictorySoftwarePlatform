@@ -1,6 +1,6 @@
 package personal.kk.victorysoftwareplatform.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
@@ -9,17 +9,20 @@ import org.apache.ibatis.type.Alias;
 
 /**
  * @author kk
- * @description 部门表(Mysql)
- * @date 2024-5-15 10:24:49
+ * @description plm期初图纸资料
+ * @date 2024-5-16 13:14:41
  */
 @Data
-@TableName("department")
-public class Department {
+@TableName("\"InitialDrawing\"")
+public class InitialDrawing {
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "id", type = IdType.AUTO)
-    private Integer id;
+    @TableField("图纸工艺名称")
+    private String name;
 
-    private String name ;
+    @TableField("类型")
+    private String type ;
 
+
+    private String location;
 }

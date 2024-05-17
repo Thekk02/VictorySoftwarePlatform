@@ -1,9 +1,14 @@
 package personal.kk.victorysoftwareplatform.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.apache.ibatis.type.Alias;
-import personal.kk.victorysoftwareplatform.enums.UserRole;
+
+
+import java.io.Serializable;
 
 /**
  * @author kk
@@ -12,12 +17,12 @@ import personal.kk.victorysoftwareplatform.enums.UserRole;
  */
 
 @Data
-@EqualsAndHashCode(callSuper = false)
-@Alias("User")
-public class User {
+@TableName("user")
+public class User implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    private int id;
+    @TableId(value = "id", type = IdType.AUTO)
+    private Integer id;
 
     private String name;
 
@@ -25,7 +30,10 @@ public class User {
 
     private boolean gender;
 
-    private UserRole role;
+    private String role;
 
-    private int department_id;
+    @TableField(value = "department_id")
+    private int departmentId;
+
+    private String avator;
 }
