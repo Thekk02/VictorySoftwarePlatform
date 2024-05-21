@@ -38,8 +38,9 @@ server:
   tomcat:
     max-http-form-post-size: 256MB
     connection-timeout: 18000
+    uri-encoding: UTF-8
 
-## 持久层配置
+  ## 持久层配置
 #mybatis-plus:
 #  global-config:
 #    db-config:

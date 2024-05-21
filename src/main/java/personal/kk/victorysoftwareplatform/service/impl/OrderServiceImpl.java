@@ -24,6 +24,11 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
 
     @Override
     public List<Order> getAll() {
-        return null;
+        return getAll();
+    }
+
+    @Override
+    public Order getByOrderId(String orderid) {
+        return getByOrderId(orderid);
     }
 }
